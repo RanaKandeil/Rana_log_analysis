@@ -1,0 +1,33 @@
+1-psql -d news -f newsdata.sql
+
+2-Question 1:
+create view popular_articles as
+select a.title ,count(l.id) as views_number  
+from log l, articles a
+where l.path = CONCAT('/article/', a.slug)
+group by a.title 
+order by views_number desc;
+
+3- Question 2:
+create view author_rank as
+select a.author , sum(p.views_number) as views
+from articles a, popular_articles p 
+where  a.title = p.title 
+group by a.author
+order by views desc;
+
+4-Question 3:
+create view error_logs as
+ select  count(*) as err_num , date(time) as date
+ from log
+ group by date ,status
+ having status like '%404%' 
+ order by err_num desc;
+ 
+5-create view all_logs as
+select  count(*) as num , date(time) as date
+ from log
+ group by date
+ order by num desc;
+ 
+6-python logs_analysis.py
