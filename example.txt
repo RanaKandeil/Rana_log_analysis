@@ -8,4 +8,5 @@ Rudolf von Treppenwitz - 423457 views
 Anonymous Contributor - 170098 views
 Markoff Chaney - 84557 views
 Days did more than 1% of requests lead to errors are :
-17-Jul-2016 - 2.00% errors
+17-JUL-2016 - 2.26% errors
+
